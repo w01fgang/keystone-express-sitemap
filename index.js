@@ -2,7 +2,7 @@ var sitemap = require('express-sitemap'),
 	dateFormat = require('date-format-lite'),
 	_ = require('underscore'),
 	async = require('async');
-	
+
 
 var KeystoneSitemap = function(keystone, req, res) {
 	// store routes for express-sitemap function method map option
@@ -36,7 +36,7 @@ var KeystoneSitemap = function(keystone, req, res) {
 	};
 
 	/**
-	 * Loop through declared routes to determine which are static and which are tied to dynamic database values (routes with :_id or other similar parameters) 
+	 * Loop through declared routes to determine which are static and which are tied to dynamic database values (routes with :_id or other similar parameters)
 	 * Called by create function
 	 */
 	var parseRoutes = function() {
@@ -44,7 +44,7 @@ var KeystoneSitemap = function(keystone, req, res) {
 		// keystone projects using express 4.x.x store routes in keystone.app._router.stack
 		// keystone projects using express 3.x.x store routes in keystone.app.routes.get
 		var routes = keystone.app._router.stack || keystone.app.routes.get;
-		
+
 		if (routes && routes.length > 0) {
 			routes.forEach(function(v, i) {
 				// express 4.x.x route objects have path property
@@ -169,7 +169,7 @@ var KeystoneSitemap = function(keystone, req, res) {
 		    map: map,
 		    route: route,
 		    url: host,
-		    http: req.protocol
+		    http: 'https'
 		}).XMLtoWeb(res);
 	};
 
